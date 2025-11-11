@@ -1,65 +1,125 @@
+"use client";
 import Image from "next/image";
-
+import { Button } from "@/components/ui/button";
+import ScrollContext from "@/components/scroll-context";
+import TextType from "@/components/TextType";
+import SplashScreen from "@/components/splash-screen";
+import { Card } from "@/components/ui/card";
+import Navbar from "@/components/navbar";
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+    <>
+      <SplashScreen />
+      <ScrollContext>
+        <div className="h-screen relative">
+          <Navbar />
+          <div className="absolute top-0 flex justify-between items-center h-full w-full px-40 gap-x-10">
+            <div className="flex flex-col w-1/2">
+              <p className="lg:text-4xl text-zinc-800">
+                Hello I&apos;m{" "}
+                <span className="font-bold">Rangga Firmansyah</span>
+              </p>
+              <div className="inline-flex items-center gap-x-2 mt-3">
+                <div className="border-b w-56 h-0.75 bg-zinc-800 mt-1.5" />
+                <TextType
+                  text={["Frontend Developer", "Freelancer", "Vibe Coder"]}
+                  typingSpeed={75}
+                  pauseDuration={1500}
+                  showCursor={true}
+                  cursorCharacter="_"
+                  className="text-zinc-800 w-full text-3xl font-medium"
+                />
+              </div>
+              <p className="text-xl tracking-wide font-stretch-expanded w-5/6 mt-2">
+                Every pixel, every line of code — designed to make the web a
+                better place.
+              </p>
+              <Button className="bg-zinc-800 text-white w-36 mt-5 rounded-full font-semibold text-lg ">
+                Let&apos;s Talk
+              </Button>
+            </div>
             <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+              src={"/images/me.svg"}
+              className="absolute bottom-0 right-20 h-[600px] w-[600px]"
+              width={5000}
+              height={5000}
+              alt="rangga firmansyah"
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+          </div>
+          <div className="absolute left-40 bottom-5">
+            <p className="underline text-lg border-zinc-800">
+              ranggaf758@gmail.com
+            </p>
+          </div>
         </div>
-      </main>
-    </div>
+        {/* tech stack */}
+        <div className="min-h-screen bg-zinc-900 py-20">
+          <div className="max-w-6xl mx-auto px-4 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-xl lg:text-4xl font-bold text-white mb-4 tracking-wide">
+                WHAT TECHNOLOGIES DO I MASTER
+              </h2>
+              <p className="text-zinc-400 text-sm lg:text-lg">
+                Technologies i’ve been working with recently
+              </p>
+            </div>
+
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+              {[
+                { name: "JavaScript", icon: "/images/logo/JS-1.png" },
+                { name: "TypeScript", icon: "/images/logo/ts.png" },
+                { name: "PHP", icon: "/images/logo/4.png" },
+                { name: "Vue JS", icon: "/images/logo/vue.png" },
+                { name: "React JS", icon: "/images/logo/react-black.png" },
+                { name: "Next JS", icon: "/images/logo/next.png" },
+                { name: "Tailwind", icon: "/images/logo/tailwind.png" },
+                { name: "MySQL", icon: "/images/logo/mysql.png" },
+                { name: "Prisma", icon: "/images/logo/prisma.png" },
+                { name: "Supabase", icon: "/images/logo/supabase.png" },
+                { name: "HTML", icon: "/images/logo/html-2.png" },
+                { name: "Node JS", icon: "/images/logo/node.png" },
+              ].map((tech, index) => (
+                <Card
+                  key={index}
+                  className="group bg-zinc-800 border-zinc-700 hover:border-zinc-600 hover:bg-zinc-750 transition-all duration-300 hover:scale-105 cursor-pointer"
+                >
+                  <div className="p-6 text-center">
+                    <div className="w-14 h-14 mx-auto mb-3 rounded-lg  group-hover:bg-white/20 flex items-center justify-center transition-all duration-300">
+                      <Image
+                        src={tech.icon}
+                        alt={tech.name}
+                        width={50}
+                        height={50}
+                        className="object-contain rounded-lg"
+                      />
+                    </div>
+                    <h3 className="text-white font-medium text-sm group-hover:text-zinc-200 transition-colors">
+                      {tech.name}
+                    </h3>
+                  </div>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </div>
+        {/* Project */}
+        <div className="min-h-screen py-20">
+          <div className="max-w-6xl mx-auto px-4 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-xl lg:text-4xl font-bold text-zinc-800 mb-4 tracking-wide">
+                PROJECTS
+              </h2>
+              <p className="text-zinc-700 text-sm lg:text-lg">
+                A selection of projects I’ve designed and developed using modern web technologies.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+
+            </div>
+          </div>
+        </div>
+      </ScrollContext>
+    </>
   );
 }
