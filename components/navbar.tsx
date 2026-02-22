@@ -1,21 +1,50 @@
 "use client";
-import Image from "next/image";
+
+import { useEffect, useState } from "react";
+import { HamburgerMenuMobile } from "@/components/hamburger";
+
 export default function Navbar() {
+  const [showHamburger, setShowHamburger] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowHamburger(window.scrollY > 80); // threshold
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <div className="flex justify-between lg:mx-36 pt-5">
-      <Image
-        src={"/images/RF-removebg-preview.png"}
-        alt="logo-RF"
-        width={100}
-        height={100}
-        className="size-14"
-      />
-      <ul className="flex items-center gap-x-10">
-        <li className="font-medium text-md text-zinc-800">HOME</li>
-        <li className="font-medium text-md text-zinc-800">SKILL</li>
-        <li className="font-medium text-md text-zinc-800">PROJECTS</li>
-        <li className="font-medium text-md text-zinc-800">CONTACT</li>
-      </ul>
-    </div>
+    <>
+      {/* Desktop Menu */}
+      <div className="hidden md:flex justify-center mx-5 lg:mx-36 pt-14 lg:pt-10">
+        <ul className="flex items-center gap-x-10">
+          <li className="font-semibold text-lg text-zinc-600">HOME</li>
+          <li className="font-semibold text-lg text-zinc-600">ABOUT</li>
+          <li className="font-semibold text-lg text-zinc-600">PROJECTS</li>
+          <li className="font-semibold text-lg text-zinc-600">CONTACT</li>
+        </ul>
+      </div>
+
+      {/* Hamburger (md+) */}
+      {showHamburger && (
+        <div className="fixed z-50 hidden md:block">
+          <div
+            className="
+        animate-in fade-in slide-in-from-top-4
+        duration-500 ease-out
+      "
+          >
+            <HamburgerMenuMobile />
+          </div>
+        </div>
+      )}
+
+      {/* Mobile Hamburger */}
+      <div className="md:hidden fixed top-5 right-5 z-50">
+        <HamburgerMenuMobile />
+      </div>
+    </>
   );
 }

@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import "./globals.css";
+import { clash, inter } from "./fonts";
+import "@/app/globals.css";
 
 export const metadata: Metadata = {
   title: "Portfolio",
   description: "Portfolio website of Rangga Firmansyah",
 };
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -13,7 +13,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={` antialiased`}>
+      <body className={`${clash.variable} ${inter.variable} font-sans`}>
         {children}
       </body>
     </html>

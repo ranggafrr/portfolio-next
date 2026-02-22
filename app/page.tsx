@@ -7,211 +7,147 @@ import SplashScreen from "@/components/splash-screen";
 import { Card } from "@/components/ui/card";
 import Navbar from "@/components/navbar";
 import { Badge } from "@/components/ui/badge";
+import Noise from "@/components/Noise";
+import { ArrowUpRight } from "lucide-react";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { projects } from "@/assets/project";
 export default function Home() {
   return (
     <>
       <SplashScreen />
       <ScrollContext>
-        <div className="h-screen relative">
-          <Navbar />
-          <div className="absolute top-0 flex justify-between items-center h-full w-full px-40 gap-x-10">
-            <div className="flex flex-col w-1/2">
-              <p className="lg:text-4xl text-zinc-800">
-                Hello I&apos;m{" "}
-                <span className="font-bold">Rangga Firmansyah</span>
-              </p>
-              <div className="inline-flex items-center gap-x-2 mt-3">
-                <div className="border-b w-56 h-0.75 bg-zinc-800 mt-1.5" />
-                <TextType
-                  text={["Frontend Developer", "Freelancer", "Vibe Coder"]}
-                  typingSpeed={75}
-                  pauseDuration={1500}
-                  showCursor={true}
-                  cursorCharacter="_"
-                  className="text-zinc-800 w-full text-3xl font-medium"
-                />
-              </div>
-              <p className="text-xl tracking-wide font-stretch-expanded w-5/6 mt-2">
-                Every pixel, every line of code — designed to make the web a
-                better place.
-              </p>
-              <Button className="bg-zinc-800 text-white w-36 mt-5 rounded-full font-semibold text-lg ">
-                Let&apos;s Talk
-              </Button>
-            </div>
-            <Image
-              src={"/images/me.svg"}
-              className="absolute bottom-0 right-20 h-[600px] w-[600px]"
-              width={5000}
-              height={5000}
-              alt="rangga firmansyah"
-            />
-          </div>
-          <div className="absolute left-40 bottom-5">
-            <p className="underline text-lg border-zinc-800">
-              ranggaf758@gmail.com
+        <Navbar />
+        <div className="relative flex flex-col xl:flex-row justify-between lg:justify-center xl:justify-between items-center min-h-screen w-full px-5 lg:px-20 xl:px-40 overflow-hidden">
+          {/* Bagian Teks Konten */}
+          <div className="z-10 flex flex-col w-full min-[390px]:h-80 min-[390px]:justify-end min-[1366px]:h-auto min-[1366px]:justify-start xl:w-1/2 mt-32 lg:mt-0 lg:mb-64 xl:mb-0">
+            <p className="text-2xl md:text-4xl lg:text-6xl xl:text-4xl text-zinc-800">
+              Hello I&apos;m{" "}
+              <span className="font-bold">Rangga Firmansyah</span>
             </p>
-          </div>
-        </div>
-        {/* tech stack */}
-        <div className="min-h-screen bg-zinc-900 pt-20">
-          <div className="max-w-6xl mx-auto px-4 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-xl lg:text-4xl font-bold text-white mb-4 tracking-wide">
-                WHAT TECHNOLOGIES DO I MASTER
-              </h2>
-              <p className="text-zinc-400 text-sm lg:text-lg">
-                Technologies i’ve been working with recently
-              </p>
+
+            <div className="inline-flex items-center gap-x-2 mt-3">
+              <div className="border-b w-32 md:w-56 h-0.5 bg-zinc-800" />
+              <TextType
+                text={["Frontend Developer", "Freelancer", "Vibe Coder"]}
+                className="text-zinc-800 w-full text-lg md:text-3xl lg:text-4xl xl:text-2xl font-medium"
+              />
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
-              {[
-                { name: "JavaScript", icon: "/images/logo/JS-1.png" },
-                { name: "TypeScript", icon: "/images/logo/ts.png" },
-                { name: "PHP", icon: "/images/logo/4.png" },
-                { name: "Vue JS", icon: "/images/logo/vue.png" },
-                { name: "React JS", icon: "/images/logo/react-black.png" },
-                { name: "Next JS", icon: "/images/logo/next.png" },
-                { name: "Tailwind", icon: "/images/logo/tailwind.png" },
-                { name: "MySQL", icon: "/images/logo/mysql.png" },
-                { name: "Prisma", icon: "/images/logo/prisma.png" },
-                { name: "Supabase", icon: "/images/logo/supabase.png" },
-                { name: "HTML", icon: "/images/logo/html-2.png" },
-                { name: "Node JS", icon: "/images/logo/node.png" },
-              ].map((tech, index) => (
-                <Card
-                  key={index}
-                  className="group bg-zinc-800 border-zinc-700 hover:border-zinc-600 hover:bg-zinc-750 transition-all duration-300 hover:scale-105 cursor-pointer"
-                >
-                  <div className="p-6 text-center">
-                    <div className="w-14 h-14 mx-auto mb-3 rounded-lg  group-hover:bg-white/20 flex items-center justify-center transition-all duration-300">
-                      <Image
-                        src={tech.icon}
-                        alt={tech.name}
-                        width={50}
-                        height={50}
-                        className="object-contain rounded-lg"
-                      />
-                    </div>
-                    <h3 className="text-white font-medium text-sm group-hover:text-zinc-200 transition-colors">
-                      {tech.name}
-                    </h3>
-                  </div>
-                </Card>
-              ))}
+            <p className="text-base md:text-xl lg:text-2xl xl:text-xl max-w-md mt-4 text-zinc-700">
+              Every pixel, every line of code — designed to make the web a
+              better place.
+            </p>
+
+            <Button className="bg-zinc-800 text-white w-32 lg:w-40 h-10 md:h-12 mt-8 rounded-full font-medium lg:text-lg">
+              Let&apos;s Talk
+            </Button>
+          </div>
+
+          {/* Container Gambar */}
+          <div className="absolute inset-0 xl:left-auto xl:right-0 xl:w-1/2 h-screen flex justify-end items-end pointer-events-none">
+            <div className="relative w-full h-[60%] xl:h-[85%] flex items-end justify-end">
+              {/* ^ Atur lg:h-[85%] sesuai keinginan, misalnya 70% atau 80% agar tidak terlalu tinggi ke atas */}
+              <Image
+                src="/images/me.svg"
+                alt="rangga firmansyah"
+                priority
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-contain object-bottom grayscale-50"
+              />
+            </div>
+          </div>
+        </div>
+        {/* about me stack */}
+        <div className="relative bg-zinc-900 overflow-hidden h-full py-8 lg:py-14">
+          <Noise
+            patternSize={250}
+            patternScaleX={1}
+            patternScaleY={1}
+            patternRefreshInterval={2}
+            patternAlpha={15}
+          />
+          <div className="flex flex-col lg:flex-row w-full max-w-7xl mx-auto px-5 lg:px-8 gap-x-10">
+            <div className="relative w-full lg:w-1/2">
+              <h2 className="text-4xl lg:text-6xl font-bold text-white tracking-wide">
+                WHO AM I?
+              </h2>
+              <div className="hidden lg:block absolute bottom-0">
+                <Image
+                  src={"/images/icon-code.jpg"}
+                  width={5000}
+                  height={5000}
+                  alt="about me rangga firmansyah"
+                  className="w-[400px] h-[400px]"
+                />
+              </div>
+            </div>
+            <div className="w-full lg:w-1/2 mt-5 lg:mt-0">
+              <p className="space-y-4 text-white leading-relaxed text-base lg:text-lg font-[Inter,system-ui,-apple-system,BlinkMacSystemFont,sans-serif]">
+                <span className="block">
+                  Hello! I’m Rangga Firmansyah, a Frontend Developer with over 4
+                  years of experience in building modern, responsive, and
+                  user-focused web applications. I specialize in crafting clean,
+                  scalable interfaces using technologies like{" "}
+                  <span className="text-blue-700 border-b-3 border-blue-700">
+                    React
+                  </span>{" "}
+                  and{" "}
+                  <span className="text-blue-700 border-b-3 border-blue-700">
+                    Next.js
+                  </span>
+                  .
+                </span>
+                <span className="block">
+                  My journey in web development is driven by a strong curiosity
+                  and a commitment to continuous improvement. Over the years,
+                  I’ve worked on various projects ranging from internal
+                  dashboards to public-facing platforms, focusing on
+                  performance, accessibility, and maintainable code. I’m
+                  comfortable collaborating across teams and translating
+                  business requirements into intuitive digital experiences.
+                </span>
+                <span className="block">
+                  Beyond frontend development, I also have experience working
+                  with backend technologies such as{" "}
+                  <span className="border-b-3">Laravel</span>,{" "}
+                  <span className="border-b-3">PHP</span>,{" "}
+                  <span className="border-b-3">MySQL</span>, and integrating
+                  APIs, which allows me to understand products from an
+                  end-to-end perspective. This full-picture mindset helps me
+                  build interfaces that are not only visually appealing but also
+                  technically reliable.
+                </span>
+                <span className="block">
+                  I enjoy learning new technologies, refining my skills, and
+                  solving real-world problems through thoughtful design and
+                  engineering. I’m always open to new challenges,
+                  collaborations, and opportunities to create meaningful digital
+                  products.
+                </span>
+              </p>
             </div>
           </div>
         </div>
         {/* Project */}
-        <div className="min-h-screen py-20">
+        <div className="min-h-screen md:min-h-auto py-8 lg:py-20">
           <div className="max-w-6xl mx-auto px-4 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-xl lg:text-4xl font-bold text-zinc-800 mb-4 tracking-wide">
-                PROJECTS
+            <div className="mb-8 lg:mb-16 w-full md:w-3/4">
+              <h2 className="text-2xl/8 lg:text-4xl/12 font-bold text-zinc-800 mb-4">
+                HERE A GLIMPSE OF SOME EXCITING PROJECTS I`VE DONE 🚀
               </h2>
-              <p className="text-zinc-700 text-sm lg:text-lg">
-                A selection of projects I’ve designed and developed using modern
-                web technologies.
-              </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[
-                {
-                  title: "Aksipeduli",
-                  description: "Social platform for community support",
-                  image: "/images/project/Macbook_Air_M2_Mockup_5.jpg",
-                  tags: [
-                    "React",
-                    "Next.js",
-                    "Tailwind",
-                    "TypeScript",
-                    "Prisma",
-                    "Supabase",
-                    "Framer Motion",
-                  ],
-                },
-                {
-                  title: "E-Commerce App",
-                  description:
-                    "Modern shopping platform with payment integration",
-                  image: "/images/project/Macbook_Air_M2_Mockup_5.jpg",
-                  tags: [
-                    "Vue.js",
-                    "Node.js",
-                    "MySQL",
-                    "Express",
-                    "Stripe",
-                    "JWT",
-                    "Redis",
-                    "Docker",
-                  ],
-                },
-                {
-                  title: "Portfolio Website",
-                  description: "Responsive portfolio with smooth animations",
-                  image: "/images/project/Macbook_Air_M2_Mockup_5.jpg",
-                  tags: [
-                    "TypeScript",
-                    "Framer Motion",
-                    "Next.js",
-                    "Tailwind",
-                    "GSAP",
-                  ],
-                },
-                {
-                  title: "Task Manager",
-                  description: "Collaborative project management tool",
-                  image: "/images/project/Macbook_Air_M2_Mockup_5.jpg",
-                  tags: [
-                    "React",
-                    "Supabase",
-                    "Prisma",
-                    "PostgreSQL",
-                    "Socket.io",
-                    "Zustand",
-                    "React Query",
-                  ],
-                },
-                {
-                  title: "Weather App",
-                  description: "Real-time weather tracking application",
-                  image: "/images/project/Macbook_Air_M2_Mockup_5.jpg",
-                  tags: [
-                    "JavaScript",
-                    "API",
-                    "CSS",
-                    "Chart.js",
-                    "PWA",
-                    "Service Worker",
-                  ],
-                },
-                {
-                  title: "Blog Platform",
-                  description: "Content management system for writers",
-                  image: "/images/project/Macbook_Air_M2_Mockup_5.jpg",
-                  tags: [
-                    "PHP",
-                    "Laravel",
-                    "MySQL",
-                    "Blade",
-                    "Bootstrap",
-                    "Eloquent",
-                    "Redis",
-                    "Cloudinary",
-                  ],
-                },
-              ].map((project, index) => (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-8 mx-5">
+              {projects.map((project, index) => (
                 <Card
                   key={index}
-                  className="group bg-white border-zinc-200 hover:border-zinc-400 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 cursor-pointer overflow-hidden grayscale hover:grayscale-0"
+                  className="group bg-white border-zinc-200 hover:border-zinc-400 hover:shadow-xl transition-all duration-300 cursor-pointer overflow-hidden grayscale hover:grayscale-0"
                 >
                   <div className="relative overflow-hidden">
                     <Image
@@ -219,42 +155,10 @@ export default function Home() {
                       alt={project.title}
                       width={1000}
                       height={1000}
-                      className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
+                      className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500 p-3 rounded-t-xl"
                     />
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300" />
-                    <div className="absolute inset-0 flex items-center justify-center gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <div className="bg-white text-black hover:bg-gray-100 cursor-pointer rounded-full p-2">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          fill="currentColor"
-                          className="size-6"
-                        >
-                          <path d="M15.75 8.25a.75.75 0 0 1 .75.75c0 1.12-.492 2.126-1.27 2.812a.75.75 0 1 1-.992-1.124A2.243 2.243 0 0 0 15 9a.75.75 0 0 1 .75-.75Z" />
-                          <path
-                            fillRule="evenodd"
-                            d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM4.575 15.6a8.25 8.25 0 0 0 9.348 4.425 1.966 1.966 0 0 0-1.84-1.275.983.983 0 0 1-.97-.822l-.073-.437c-.094-.565.25-1.11.8-1.267l.99-.282c.427-.123.783-.418.982-.816l.036-.073a1.453 1.453 0 0 1 2.328-.377L16.5 15h.628a2.25 2.25 0 0 1 1.983 1.186 8.25 8.25 0 0 0-6.345-12.4c.044.262.18.503.389.676l1.068.89c.442.369.535 1.01.216 1.49l-.51.766a2.25 2.25 0 0 1-1.161.886l-.143.048a1.107 1.107 0 0 0-.57 1.664c.369.555.169 1.307-.427 1.605L9 13.125l.423 1.059a.956.956 0 0 1-1.652.928l-.679-.906a1.125 1.125 0 0 0-1.906.172L4.575 15.6Z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
-                      </div>
-                      <div className="bg-white text-black hover:bg-gray-100 cursor-pointer rounded-full p-2">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          fill="currentColor"
-                          className="size-6"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            clipRule="evenodd"
-                            d="M12.026 2c-5.509 0-9.974 4.465-9.974 9.974 0 4.406 2.857 8.145 6.821 9.465.499.09.679-.217.679-.481 0-.237-.008-.865-.011-1.696-2.775.602-3.361-1.338-3.361-1.338-.452-1.152-1.107-1.459-1.107-1.459-.905-.619.069-.605.069-.605 1.002.07 1.527 1.028 1.527 1.028.89 1.524 2.336 1.084 2.902.829.091-.645.351-1.085.635-1.334-2.214-.251-4.542-1.107-4.542-4.93 0-1.087.389-1.979 1.024-2.675-.101-.253-.446-1.268.099-2.64 0 0 .837-.269 2.742 1.021a9.582 9.582 0 0 1 2.496-.336 9.554 9.554 0 0 1 2.496.336c1.906-1.291 2.742-1.021 2.742-1.021.545 1.372.203 2.387.099 2.64.64.696 1.024 1.587 1.024 2.675 0 3.833-2.33 4.675-4.552 4.922.355.308.675.916.675 1.846 0 1.334-.012 2.41-.012 2.737 0 .267.178.577.687.479C19.146 20.115 22 16.379 22 11.974 22 6.465 17.535 2 12.026 2z"
-                          ></path>
-                        </svg>
-                      </div>
-                    </div>
                   </div>
-                  <div className="px-3 pb-6">
+                  <div className="relative px-5 pb-6 h-56">
                     <h3 className="text-xl font-bold text-zinc-800 mb-2 group-hover:text-zinc-900">
                       {project.title}
                     </h3>
@@ -266,11 +170,24 @@ export default function Home() {
                         <Badge
                           key={tagIndex}
                           variant="secondary"
-                          className="text-xs bg-zinc-200/70 font-medium text-zinc-900 hover:bg-zinc-200"
+                          className="text-xs bg-transparent font-medium text-zinc-800 border-zinc-300 px-3"
                         >
                           {tag}
                         </Badge>
                       ))}
+                    </div>
+                    <div className="absolute bottom-5 left-5">
+                      <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-x-2 hover:border-b-2 border-zinc-800 pb-2"
+                      >
+                        <p className="text-zinc-800 ">View Project</p>{" "}
+                        <div className="rounded-full border border-zinc-800 p-1">
+                          <ArrowUpRight className="h-5 w-5" />
+                        </div>
+                      </a>
                     </div>
                   </div>
                 </Card>
@@ -279,7 +196,7 @@ export default function Home() {
             <div className="flex justify-center mt-14">
               <Button
                 size={"lg"}
-                className="rounded-full text-3xl py-8 px-24 font-normal"
+                className="rounded-full text-2xl lg:text-3xl py-7 lg:py-8  px-16 lg:px-24 font-normal"
               >
                 MORE
               </Button>
@@ -287,111 +204,106 @@ export default function Home() {
           </div>
         </div>
         {/* FAQ */}
-        <div className="min-h-screen pt-20">
-          <div className="max-w-6xl mx-auto px-4 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-xl lg:text-4xl font-bold text-zinc-800 mb-4 uppercase">
-                Let’s Clear Things Up
-              </h2>
-              <p className="text-zinc-700 text-sm lg:text-lg">
-                Here are a few quick answers that might be helpful.
-              </p>
-            </div>
-            <Accordion type="single" collapsible>
-              <AccordionItem
-                value="item-1"
-                className="border-t border-primary py-5"
-              >
-                <AccordionTrigger className="text-zinc-700 text-3xl font-[550]">
-                  Do you accept freelance projects?
-                </AccordionTrigger>
-                <AccordionContent className="text-zinc-700 pb-10">
-                  Yes, I accept{" "}
-                  <span className="font-extrabold text-blue-800">
-                    freelance projects
-                  </span>{" "}
-                  depending on my availability. You can contact me through the{" "}
-                  <span className="font-extrabold text-blue-800">
-                    contact page
-                  </span>{" "}
-                  or <span className="font-extrabold text-blue-800">email</span>
-                  .
-                </AccordionContent>
-              </AccordionItem>
-              <AccordionItem
-                value="item-2"
-                className="border-t border-primary py-5"
-              >
-                <AccordionTrigger className="text-zinc-700 text-3xl font-[550]">
-                  What services do you offer?
-                </AccordionTrigger>
-                <AccordionContent className="text-zinc-700 pb-10">
-                  I offer website design and development services, as well as
-                  modern web app development.
-                </AccordionContent>
-              </AccordionItem>
-              <AccordionItem
-                value="item-3"
-                className="border-t border-primary py-5"
-              >
-                <AccordionTrigger className="text-zinc-700 text-3xl font-[550]">
-                  How much does it cost to build a website?
-                </AccordionTrigger>
-                <AccordionContent className="text-zinc-700 pb-10">
-                  The{" "}
-                  <span className="font-extrabold text-blue-800">
-                    cost depends on
-                  </span>{" "}
-                  the{" "}
-                  <span className="font-extrabold text-blue-800">
-                    complexity of the features, design requirements, deadline,
-                    and the technologies used.
-                  </span>{" "}
-                  Feel free to reach out for a more accurate estimate.
-                </AccordionContent>
-              </AccordionItem>
-              <AccordionItem
-                value="item-4"
-                className="border-t border-primary py-5"
-              >
-                <AccordionTrigger className="text-zinc-700 text-3xl font-[550]">
-                  How long does it take to complete a website?
-                </AccordionTrigger>
-                <AccordionContent className="text-zinc-700 pb-10">
-                  Project timelines vary depending on complexity and scope. A{" "}
-                  <span className="font-extrabold text-blue-800">
-                    simple website
-                  </span>{" "}
-                  might take{" "}
-                  <span className="font-extrabold text-blue-800">
-                    2-4 weeks
-                  </span>
-                  , while a{" "}
-                  <span className="font-extrabold text-blue-800">
-                    complex application{" "}
-                  </span>
-                  could take{" "}
-                  <span className="font-extrabold text-blue-800">
-                    2-3 months
-                  </span>
-                  .
-                </AccordionContent>
-              </AccordionItem>
-            </Accordion>
+        <div className="max-w-6xl mx-auto px-4 lg:px-8 py-10 lg:py-20">
+          <div className="text-center mb-10 lg:mb-16">
+            <h2 className="text-2xl lg:text-4xl font-bold text-zinc-800 mb-4 uppercase">
+              Let’s Clear Things Up
+            </h2>
+            <p className="text-zinc-700 text-base lg:text-lg">
+              Here are a few quick answers that might be helpful.
+            </p>
           </div>
+          <Accordion type="single" collapsible>
+            <AccordionItem
+              value="item-1"
+              className="border-t border-primary py-3 lg:py-5"
+            >
+              <AccordionTrigger className="text-zinc-700 text-md md:text-2xl lg:text-3xl font-[550]">
+                Do you accept freelance projects?
+              </AccordionTrigger>
+              <AccordionContent className="text-zinc-700 pb-10 md:text-lg">
+                Yes, I accept{" "}
+                <span className="font-extrabold text-blue-800">
+                  freelance projects
+                </span>{" "}
+                depending on my availability. You can contact me through the{" "}
+                <span className="font-extrabold text-blue-800">
+                  contact page
+                </span>{" "}
+                or <span className="font-extrabold text-blue-800">email</span>.
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem
+              value="item-2"
+              className="border-t border-primary py-3 lg:py-5"
+            >
+              <AccordionTrigger className="text-zinc-700 text-md md:text-2xl lg:text-3xl font-[550]">
+                What services do you offer?
+              </AccordionTrigger>
+              <AccordionContent className="text-zinc-700 pb-10 md:text-lg">
+                I offer website design and development services, as well as
+                modern web app development.
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem
+              value="item-3"
+              className="border-t border-primary py-3 lg:py-5"
+            >
+              <AccordionTrigger className="text-zinc-700 text-md md:text-2xl lg:text-3xl font-[550]">
+                How much does it cost to build a website?
+              </AccordionTrigger>
+              <AccordionContent className="text-zinc-700 pb-10 md:text-lg">
+                The{" "}
+                <span className="font-extrabold text-blue-800">
+                  cost depends on
+                </span>{" "}
+                the{" "}
+                <span className="font-extrabold text-blue-800">
+                  complexity of the features, design requirements, deadline, and
+                  the technologies used.
+                </span>{" "}
+                Feel free to reach out for a more accurate estimate.
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem
+              value="item-4"
+              className="border-t border-primary py-3 lg:py-5"
+            >
+              <AccordionTrigger className="text-zinc-700 text-md md:text-2xl lg:text-3xl font-[550]">
+                How long does it take to complete a website?
+              </AccordionTrigger>
+              <AccordionContent className="text-zinc-700 pb-10 md:text-lg">
+                Project timelines vary depending on complexity and scope. A{" "}
+                <span className="font-extrabold text-blue-800">
+                  simple website
+                </span>{" "}
+                might take{" "}
+                <span className="font-extrabold text-blue-800">2-4 weeks</span>,
+                while a{" "}
+                <span className="font-extrabold text-blue-800">
+                  complex application{" "}
+                </span>
+                could take{" "}
+                <span className="font-extrabold text-blue-800">2-3 months</span>
+                .
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
         </div>
-        {/* tech stack */}
-        <div className="bg-zinc-900 py-20">
-          <div className="max-w-6xl mx-auto px-4 lg:px-8 flex justify-between">
-            <div className="flex flex-col w-1/2">
-              <p className="text-white text-5xl uppercase font-semibold">
+        {/* footer */}
+        <div className="bg-zinc-900 py-10 lg:py-20">
+          <div className="max-w-6xl mx-auto px-4 lg:px-8 flex flex-col md:flex-row justify-between">
+            <div className="flex flex-col w-full md:w-1/2">
+              <p className="text-white text-3xl lg:text-5xl uppercase font-semibold">
                 Let`s make sure to keep in touch.🚀
               </p>
               <div className="border border-white rounded-full w-fit px-4 py-2 mt-10 hover:bg-white/20 cursor-pointer transition-all duration-300">
-                <p className="text-white text-3xl">ranggaf758@gmail.com</p>
+                <p className="text-white text-xl lg:text-3xl">
+                  ranggaf758@gmail.com
+                </p>
               </div>
             </div>
-            <div className="flex flex-col">
+            <div className="flex flex-col mt-10 lg:mt-0 w-full md:w-1/2">
               <p className="uppercase font-semibold text-right text-white text-5xl">
                 menu
               </p>

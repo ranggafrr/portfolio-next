@@ -46,7 +46,10 @@
 :root {
   --radius: 0.625rem;
   --background: #f7f4ed;
-  --font-montserrat: "Montserrat", sans-serif;
+  --font-family: "Inter", sans-serif;
+  --font-optical-sizing: auto;
+  --font-weight: <weight>;
+  --font-style: normal;
   /* --background: oklch(1 0 0); */
   --foreground: oklch(0.141 0.005 285.823);
   --card: oklch(1 0 0);
@@ -114,14 +117,25 @@
   --sidebar-ring: oklch(0.552 0.016 285.938);
 }
 
+@theme inline {
+  --font-sans: var(--font-inter);
+  --font-heading: var(--font-clash);
+  --font-mono: var(--font-geist-mono);
+}
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
   body {
     @apply bg-background text-foreground;
-    font-family: var(--font-montserrat);
+    font-family: var(--font-sans);
     font-optical-sizing: auto;
-    font-style: normal;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    font-family: var(--font-heading);
   }
 }
