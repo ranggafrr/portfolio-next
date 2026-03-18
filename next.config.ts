@@ -1,7 +1,3 @@
-const nextConfig = {
-  turbopack: {
-    enabled: false,
-  },
-};
+const nextConfig = {};
 
 export default nextConfig;
