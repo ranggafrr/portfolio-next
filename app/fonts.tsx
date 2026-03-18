@@ -4,9 +4,9 @@ import { Inter } from "next/font/google";
 
 export const clash = localFont({
   src: [
-    { path: "../public/fonts/ClashDisplay-Regular.otf", weight: "400" },
-    { path: "../public/fonts/ClashDisplay-Semibold.otf", weight: "600" },
-    { path: "../public/fonts/ClashDisplay-bold.otf", weight: "700" },
+    { path: "./fonts/ClashDisplay-Regular.otf", weight: "400" },
+    { path: "./fonts/ClashDisplay-Semibold.otf", weight: "600" },
+    { path: "./fonts/ClashDisplay-Bold.otf", weight: "700" },
   ],
   variable: "--font-clash",
 });
