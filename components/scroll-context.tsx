@@ -1,29 +1,29 @@
 "use client";
 import { useEffect, useState, createContext, useContext, ReactNode } from "react";
 import Lenis from "lenis";
-
+import { useViewPoint } from "@/hooks/useViewpoint";
 const LenisContext = createContext<Lenis | null>(null);
 
-export default function ScrollContext({ children }: { children: ReactNode }) {
-  const [lenis] = useState<Lenis | null>(() => 
-    typeof window !== "undefined" ? new Lenis() : null
-  );
-  
+export default function ScrollContext({ children, ready = true }: { children: ReactNode; ready?: boolean }) {
+  const [lenis, setLenis] = useState<Lenis | null>(null);
+  useViewPoint();
   useEffect(() => {
-    if (!lenis) return;
-    
+    if (!ready) return;
+
+    const instance = new Lenis();
+    setLenis(instance);
+
     function raf(time: number) {
-      lenis!.raf(time);
+      instance.raf(time);
       requestAnimationFrame(raf);
     }
-    
     requestAnimationFrame(raf);
 
     return () => {
-      lenis!.destroy();
+      instance.destroy();
     };
-  }, [lenis]);
-  
+  }, [ready]);
+
   return (
     <LenisContext.Provider value={lenis}>
       {children}

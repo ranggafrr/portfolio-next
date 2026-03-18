@@ -17,7 +17,7 @@ export const projects = [
     title: "Sharing Academy",
     description: "Responsive portfolio with smooth animations",
     image: "/images/project/sa-mockup.png",
-    link: "#",
+    link: "https://sharingacademy.id/",
     tags: ["React JS", "TypeScript", "Tailwind", "MySQL"],
   },
 ];

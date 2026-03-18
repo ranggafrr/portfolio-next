@@ -3,13 +3,14 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 
-export default function SplashScreen() {
+export default function SplashScreen({ title, onDone }: { title: string; onDone?: () => void }) {
   const [showSplash, setShowSplash] = useState(true);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowSplash(false);
-    }, 3000);
+      onDone?.();
+    }, 1800);
     return () => clearTimeout(timer);
   }, []);
 
@@ -17,78 +18,35 @@ export default function SplashScreen() {
     <AnimatePresence>
       {showSplash && (
         <motion.div
-          className="fixed inset-0 bg-zinc-900 z-9999 flex items-center justify-center overflow-hidden"
+          className="fixed inset-0 z-[9999] flex items-center justify-center bg-zinc-950"
+          initial={{ opacity: 1 }}
           exit={{
             opacity: 0,
-            scale: 1.1,
-            transition: {
-              duration: 0.6,
-              ease: [0.76, 0, 0.24, 1],
-            },
+            transition: { duration: 0.6, ease: "easeInOut" },
           }}
         >
-          {/* Greeting Text */}
-          <div className="text-center">
-            <motion.div
-              className="overflow-hidden mb-4"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.3, duration: 0.8 }}
+          <div className="flex flex-col items-center gap-6">
+            {/* Text */}
+            <motion.h1
+              className="font-heading text-5xl md:text-7xl font-extrabold tracking-wide text-white"
+              initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
+              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              transition={{ duration: 0.9, ease: "easeOut" }}
             >
-              <motion.h1
-                className="text-5xl md:text-6xl font-extralight text-white tracking-wider"
-                initial={{ y: 100, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
+              {title}
+            </motion.h1>
+            {/* Loading line */}
+            <div className="w-32 h-[2px] bg-zinc-800 overflow-hidden mt-2">
+              <motion.div
+                className="h-full bg-white"
+                initial={{ width: "0%" }}
+                animate={{ width: "100%" }}
                 transition={{
-                  delay: 0.5,
-                  duration: 1,
-                  ease: [0.76, 0, 0.24, 1],
+                  duration: 1.4,
+                  ease: "easeInOut",
                 }}
-              >
-                Hello
-              </motion.h1>
-            </motion.div>
-
-            <motion.div
-              className="overflow-hidden"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1.2, duration: 0.6 }}
-            >
-              <motion.p
-                className="text-zinc-400 text-sm lg:text-base tracking-[0.3em] uppercase font-light"
-                initial={{ y: 30, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{
-                  delay: 1.4,
-                  duration: 0.8,
-                  ease: [0.76, 0, 0.24, 1],
-                }}
-              >
-                Welcome to my world
-              </motion.p>
-            </motion.div>
-
-            {/* Subtle dot indicator */}
-            <motion.div
-              className="mt-12 flex justify-center space-x-2"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 2, duration: 0.5 }}
-            >
-              {[0, 1, 2].map((i) => (
-                <motion.div
-                  key={i}
-                  className="w-1 h-1 bg-zinc-600 rounded-full"
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  transition={{
-                    delay: 2.2 + i * 0.1,
-                    duration: 0.3,
-                  }}
-                />
-              ))}
-            </motion.div>
+              />
+            </div>
           </div>
         </motion.div>
       )}
